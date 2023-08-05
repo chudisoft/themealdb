@@ -1,0 +1,389 @@
+@import url("https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Raleway:ital,wght@0,400;0,700;1,700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Lora", serif;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #dfdfdf;
+}
+
+.app-header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+}
+
+.navbar-logo {
+  height: auto;
+  margin-left: 1.5rem;
+  padding: 18px;
+  padding-left: 18rem;
+  list-style: none;
+  background-image: url('../src/assets/images/logo.png');
+}
+
+.navbar {
+  display: flex;
+  height: 65px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+  background-color: #2d2c38;
+  border: 2px solid #dc3545;
+  flex-direction: row;
+}
+
+.navbar-nav {
+  padding: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2.2rem;
+  flex-direction: row;
+  padding-left: 1rem;
+  padding-right: 1.5rem;
+  list-style: none;
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+}
+
+.navbar-nav > li.nav-item > a.nav-link {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.9rem;
+  font-weight: 900;
+  font-family: "Raleway", sans-serif;
+  text-transform: uppercase;
+}
+
+.navbar-nav > li.nav-item > a.nav-link:hover,
+.navbar-nav > li.nav-item > a.nav-link:focus {
+  color: #f05f40;
+}
+
+.nav-item:hover {
+  transform: scale(1.3);
+}
+
+a {
+  text-decoration: none;
+}
+
+main {
+  margin-top: 5em;
+  min-height: 75vh;
+}
+
+.meals-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+}
+
+@media only screen and (min-width: 768px) {
+  .meals-card {
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  .meals-card::after {
+    content: '';
+    flex: auto;
+  }
+}
+
+.mealItem {
+  margin: 1rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  border: 2px solid darkgray;
+  border-radius: 8px;
+  background-color: #fff;
+  gap: 1rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .mealItem {
+    flex-direction: column;
+    margin: 1rem 0.5rem;
+    padding: 1rem 0.5rem;
+    width: 44%;
+    justify-content: flex-start;
+    gap: 0;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .mealItem {
+    width: 30%;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .mealItem {
+    width: 23%;
+  }
+}
+
+.strUl {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: large;
+}
+
+.likeUl {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1.2rem;
+  margin-bottom: 0.1rem;
+  padding-bottom: 0.1rem;
+}
+
+.thumb {
+  height: 220px;
+  width: 220px;
+  border-radius: 1rem;
+  align-self: center;
+  margin-top: 0.5rem;
+  margin-bottom: 0.1rem;
+}
+
+.thumb:hover {
+  filter: drop-shadow(0 0 0.75rem crimson);
+  transform: scale(1.2);
+}
+
+.catlablel {
+  font-size: 1.2rem;
+  font-weight: 500;
+  font-family: "Raleway", sans-serif;
+  text-align: left;
+}
+
+.arealabel {
+  font-size: 1.2rem;
+  font-weight: 500;
+  font-family: "Raleway", sans-serif;
+}
+
+.buttonDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.comments-board button,
+.button {
+  background-color: #dc3dcb;
+  border: 1px solid #000;
+  border-radius: 3px;
+  width: 8.5rem;
+  font-size: 1.5rem;
+  font-weight: 900;
+  font-family: "Raleway", sans-serif;
+  margin-left: 4.5rem;
+  margin-top: 1rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #19f5aa;
+  transition: 1s;
+}
+
+.imgLike {
+  height: 1.5rem;
+}
+
+.imgLike:hover {
+  cursor: pointer;
+  filter: invert(8%) sepia(98%) saturate(6374%) hue-rotate(246deg) brightness(111%) contrast(147%);
+}
+
+.imgLike:active {
+  filter: invert(42%) sepia(98%) saturate(7352%) hue-rotate(354deg) brightness(98%) contrast(124%);
+}
+
+span {
+  margin: 1rem;
+  font-size: 1.6rem;
+}
+
+.hide {
+  display: none;
+}
+
+p {
+  margin: 0.2rem;
+  font-size: 1rem;
+}
+
+#submit {
+  font-family: 'Poppins', serif;
+  font-weight: lighter;
+  cursor: pointer;
+}
+
+.open-popup {
+  position: fixed;
+  z-index: 100;
+  top: 1rem;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  opacity: 95%;
+  backdrop-filter: blur(80px);
+  transition: height 1s ease;
+  padding: 1.5rem;
+}
+
+.close-popup {
+  margin-left: 75.5%;
+  margin-top: 3.5%;
+  position: fixed;
+  border-radius: 5px;
+}
+
+.comments-board {
+  padding-top: 0.2rem;
+  padding-left: 2rem;
+  margin: 3% auto;
+  display: flex;
+  border: 5px solid grey;
+  border-radius: 10px;
+  overflow: auto;
+  flex-direction: column;
+  width: 850px;
+  height: 500px;
+  background-color: #a3cfbb;
+}
+
+.comments-board #imgThumb {
+  width: 300px;
+  height: 300px;
+  border-radius: 1rem;
+  order: -1;
+  margin: 1rem;
+}
+
+.comments-board label {
+  display: block;
+  font-size: 1.3em;
+  margin-block-start: 0.5rem;
+  margin-block-end: 0.2rem;
+  margin-inline-start: 5rem;
+  margin-inline-end: 0;
+  font-weight: bold;
+}
+
+.comments-board h3 {
+  display: block;
+  font-size: 1.5rem;
+  margin-block-start: 1rem;
+  margin-block-end: 1rem;
+  margin-inline-start: 5rem;
+  margin-inline-end: 0;
+}
+
+.comments-board h4 {
+  display: block;
+  font-size: 1.5rem;
+  margin: 1rem;
+  margin-block-start: 2rem;
+  margin-block-end: 0.1rem;
+  margin-inline-start: 5rem;
+  margin-inline-end: 0;
+  font-weight: bold;
+}
+
+.comments-board h5 {
+  font-size: 1.2rem;
+}
+
+.comments-board input {
+  margin: 1% 10%;
+  width: 25rem;
+  height: 30px;
+  border-radius: 5px;
+  padding: 0.5rem;
+  border-color: #fed136;
+  box-shadow: none;
+}
+
+.comments-board #comment {
+  height: 6rem;
+}
+
+.divComments {
+  border-radius: 5px;
+  padding: 0.1rem;
+  margin: 1rem;
+  background-color: white;
+}
+
+.comment {
+  padding: 0.2rem;
+  margin: 0.8rem;
+  background-color: rgb(206, 121, 138, 0.4);
+}
+
+.imgCancel {
+  height: 2rem;
+  width: 2rem;
+  position: fixed;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(282deg) brightness(104%) contrast(106%);
+  cursor: pointer;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  margin: 0.2rem;
+}
+
+section,
+footer {
+  padding: 2em;
+}
+
+.author {
+  font-weight: 900;
+  font-family: "Raleway", sans-serif;
+  color: #3763f4;
+}
+
+footer {
+  border-top: solid 2px #dc3545;
+  display: flex;
+  justify-content: center;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
+  font-weight: 900;
+  padding: 1.5rem;
+  background-color: #2d2c38;
+  color: rgba(255, 255, 255, 0.85);
+}

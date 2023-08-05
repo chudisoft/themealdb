@@ -1,6 +1,6 @@
 <a name="readme-top"></a>
 <div align="center">
-  <h3><b> api-based-webapp Project</b></h3>
+  <h3><b>The meal db Project</b></h3>
 </div>
 
 <!-- TABLE OF CONTENTS -->
@@ -8,7 +8,7 @@
 # 📗 Table of Contents
 
 - [📗 Table of Contents](#-table-of-contents)
-- [📖 \[ api-based-webapp\] ](#--api-based-webapp-)
+- [📖 \[themealdb\] ](#--api-based-webapp-)
   - [🛠 Built With ](#-built-with-)
     - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
@@ -31,13 +31,13 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 [ api-based-webapp] <a name="about-project"></a>
+# 📖 [themealdb] <a name="about-project"></a>
 
 > This project was created as part of Microverse module 2 week 4 tasks.
 It gives the student an opportunity to play around with HTML, CSS, and Github.
 It also allows the student to showcase what they can do to the future employee.
 
-**[ api-based-webapp]** is a project that allows one to store and manage list of game scores.
+**[themealdb]** is a project that allows one to store and manage list of game scores.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -80,7 +80,7 @@ It also allows the student to showcase what they can do to the future employee.
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-> This Project is deployed at [Github Pages](https://yusufyusie.github.io/ api-based-webapp/dist/)
+> This Project is deployed at [Github Pages](https://chudisoft.github.io/themealdb/dist/)
 
 <!-- - [Live Demo Link](https://google.com) -->
 
@@ -110,8 +110,8 @@ In order to run this project you need:
 Clone this repository to your desired folder:
 
 ```sh
-  git clone git@github.com:yusufyusie/ api-based-webapp.git
-  cd  api-based-webapp
+  git clone git@github.com:chudisoft/themealdb.git
+  cd themealdb
   code .
 ```
 -

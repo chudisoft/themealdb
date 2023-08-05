@@ -1,151 +1,175 @@
-import displayMeals from './cards/getMeals.js';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import Toastify from 'toastify-js';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import 'toastify-js/src/toastify.css';
 
-const commentCard = (name, date, comment) => {
-  const comments = document.querySelector('.divComments');
-  const div = document.createElement('div');
-  div.className = 'comment';
-  div.innerHTML = `<h5>${date}<span>:-</span> ${name} ${comment}</h5>`;
-  comments.appendChild(div);
-};
+class MealPopup {
+  constructor(appId, baseUrl, baseUrlInvolve, mealId) {
+    this.mealId = mealId;
 
-const getComments = async (idMeal) => {
-  let url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/iDkQTjuQFS7PeimALucH/comments?item_id=';
-  url += idMeal;
-  const response = await fetch(url);
-  const data = await response.json(url);
-  return data;
-};
-
-const commentCounter = () => {
-  const commentCount = document.getElementsByClassName('comment').length;
-  return commentCount;
-};
-
-export default commentCounter;
-
-const commentArray = async (idMeal) => {
-  const counter = document.querySelector('.divCounter');
-  const div = document.createElement('div');
-  div.className = 'counting';
-  const data = await getComments(idMeal);
-  data.forEach((comment) => {
-    commentCard(comment.username, comment.creation_date, comment.comment);
-  });
-  counter.innerHTML = '';
-  div.innerHTML = `<h4>Comments(${commentCounter()})</h4>`;
-  counter.appendChild(div);
-};
-
-const URL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/iDkQTjuQFS7PeimALucH/comments';
-
-const postComment = async (name, comment, idMeal) => {
-  const response = await fetch(URL, {
-    method: 'POST',
-    body: JSON.stringify({
-      item_id: idMeal,
-      username: name,
-      // eslint-disable-next-line object-shorthand
-      comment: comment,
-    }),
-    headers: {
-      'Content-type': 'application/json; charset=UTF-8',
-      'access-control-allow-origin': '*',
-      'Access-Control-Allow-Credentials': 'true',
-    },
-  });
-  const data = await response.json();
-  return data;
-};
-
-const commentsCard = (title, tag, imageThumb, id, category, area, instructions) => {
-  const commentsBoard = document.querySelector('.comments-board');
-
-  const imgThumb = document.createElement('img');
-  imgThumb.id = 'imgThumb';
-  imgThumb.src = imageThumb;
-
-  const form = document.createElement('form');
-
-  const divText = document.createElement('div');
-  divText.className = 'divText';
-  const divCounter = document.createElement('div');
-  divCounter.className = 'divCounter';
-  const divTable = document.createElement('div');
-  divTable.className = 'divComments';
-
-  if (!tag) {
-    tag = '';
+    this.modal = document.querySelector('.modal');
+    this.commentList = document.querySelector('.comment-list');
+    this.commentForm = document.querySelector('.comment-form');
+    this.commentTotal = document.querySelector('#comment-total');
+    this.list = document.querySelector('.comment-list');
+    this.appId = appId;
+    this.comments = [];
+    this.lblMessage = document.querySelector('#message');
+    this.baseUrl = baseUrl;
+    this.baseUrlInvolve = baseUrlInvolve;
+    this.commentForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const username = document.getElementById('comment-name');
+      const insight = document.getElementById('comment-insight');
+      const button = document.getElementById('comment-button');
+      this.addComment(button, username.value, insight.value);
+    });
   }
 
-  divText.innerHTML = `<h1>${title}</h1>
-                        <h3>Area: ${area} | Catgory: ${category} | Tag: ${tag}</h3>
-                        <p>Instructions: ${instructions}</p>`;
-
-  const formLabel = document.createElement('label');
-  formLabel.id = 'label';
-  formLabel.textContent = 'Add your comment';
-
-  const inputName = document.createElement('input');
-  inputName.id = 'name';
-  inputName.className = 'remove';
-  inputName.placeholder = 'Your Name';
-  inputName.required = true;
-
-  const inputComment = document.createElement('input');
-  inputComment.id = 'comment';
-  inputComment.placeholder = 'Your Insights';
-  inputComment.required = true;
-
-  const submitButton = document.createElement('button');
-  submitButton.id = 'submit';
-  submitButton.textContent = 'SUBMIT';
-
-  const inputs = [formLabel, inputName, inputComment, submitButton];
-
-  for (let i = 0; i < inputs.length; i += 1) {
-    form.appendChild(inputs[i]);
+  getMeallist() {
+    return this.meallist;
   }
 
-  commentsBoard.appendChild(imgThumb);
-  commentsBoard.appendChild(divText);
-  divText.appendChild(form);
-  divText.appendChild(divCounter);
-  commentsBoard.appendChild(divTable);
-  commentArray(id);
+  showMeal(meal) {
+    this.modal.classList.toggle('show');
+    const itemTitle = document.querySelector('#itemTitle');
+    const itemImage = document.querySelector('#itemImage');
+    const tags = document.querySelector('#tags');
+    const youtube = document.querySelector('#youtube');
+    const category = document.querySelector('#category');
+    const area = document.querySelector('#area');
+    const instruction = document.querySelector('.instruction');
+    const ingredients = document.querySelector('.ingredients');
+    itemTitle.textContent = meal.strMeal;
+    tags.textContent = meal.strTags;
+    youtube.href = meal.strYoutube;
+    itemImage.src = meal.strMealThumb;
+    instruction.textContent = meal.strInstructions;
+    category.textContent = meal.strCategory;
+    area.textContent = meal.strArea;
 
-  form.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const userName = document.getElementById('name');
-    const comment = document.getElementById('comment');
-    postComment(userName.value, comment.value, id);
-    userName.value = 'Please Wait';
-    comment.value = 'Please Wait';
-    setTimeout(() => {
-      userName.value = '';
-      comment.value = '';
-      divTable.innerHTML = '';
-      commentArray(id);
-    }, 2000);
-  });
-};
-
-const mealPopup = async (idMeal) => {
-  const data = await displayMeals();
-  data.meals.forEach((meal) => {
-    if (meal.idMeal === idMeal) {
-      commentsCard(
-                    meal.strMeal,
-                    meal.strTags,
-                    meal.strMealThumb,
-                    meal.idMeal,
-                     meal.strCategory,
-                    meal.strArea,
-                    meal.strInstructions,
-                    );
+    for (let i = 0; i < 20; i += 1) {
+      const ing = meal[`strIngredient${i + 1}`];
+      if (ing !== '' && ing !== null) {
+        const li = document.createElement('li');
+        li.className = 'ingredient';
+        li.textContent = ing;
+        ingredients.appendChild(li);
+      }
     }
-  });
-};
+  }
 
-export {
- mealPopup, commentsCard, postComment, commentArray, commentCounter, getComments, commentCard,
-};
+  showComment(comment) {
+    const li = document.createElement('li');
+    const elName = document.createElement('label');
+    const elComment = document.createElement('label');
+    const elTime = document.createElement('label');
+
+    li.className = 'bg';
+
+    elName.textContent = `${comment.username}: `;
+    elComment.textContent = `${comment.comment}`;
+    elTime.textContent = `${comment.creation_date} `;
+
+    li.appendChild(elTime);
+    li.appendChild(elName);
+    li.appendChild(elComment);
+    this.list.appendChild(li);
+  }
+
+  getMeal = (async (btnRefresh = null) => {
+    if (btnRefresh !== null) btnRefresh.childNodes[2].classList.toggle('fa fa-spin fa-spinner');
+    const response = await fetch(`${this.baseUrl}lookup.php?i=${this.mealId}`, {
+      method: 'get',
+      mode: 'cors', // no-cors, *cors, same-origin
+      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: 'same-origin',
+    });
+    const meal = await response.json();
+    if (meal.message) {
+      this.lblMessage.textContent = meal.message;
+    } else {
+      this.showMeal(meal.meals[0]);
+      this.getComments();
+    }
+    if (btnRefresh !== null) btnRefresh.childNodes[2].classList.toggle('fa fa-spin fa-spinner');
+  });
+
+  addComment = (async (btnRefresh = null, username, comment) => {
+    if (btnRefresh !== null) btnRefresh.childNodes[0].className = ('fa fa-spin fa-spinner');
+    const commentObject = {
+        item_id: this.mealId,
+        username,
+        comment,
+      };
+    const response = await fetch(`${this.baseUrlInvolve}${this.appId}/comments`, {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      mode: 'cors', // no-cors, *cors, same-origin
+      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: 'same-origin',
+      body: JSON.stringify(commentObject),
+    });
+    const result = await response.text();
+    if (result.error) {
+      Toastify({
+        text: result.error.message,
+        className: 'info',
+        style: {
+          background: 'linear-gradient(to right, #00b09b, #96c93d)',
+        },
+      }).showToast();
+    } else {
+      Toastify({
+        text: result,
+        className: 'info',
+        style: {
+          background: 'linear-gradient(to right, #00b09b, #96c93d)',
+        },
+      }).showToast();
+      this.getComments();
+    }
+    if (btnRefresh !== null) btnRefresh.childNodes[0].className = '';
+  });
+
+  getComments = (async (btnRefresh = null) => {
+    this.list.innerText = '';
+    this.commentTotal.innerText = 0;
+    if (btnRefresh !== null) btnRefresh.childNodes[0].className = ('fa fa-spin fa-spinner');
+    const url = `${this.baseUrlInvolve + this.appId}/comments?item_id=${this.mealId}`;
+    const response = await fetch(url, {
+      method: 'get',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      mode: 'cors', // no-cors, *cors, same-origin
+      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: 'same-origin',
+    });
+    const comments = await response.json();
+    if (comments.error) {
+      Toastify({
+        text: comments.error.message,
+        className: 'info',
+        style: {
+          background: 'linear-gradient(to right, #00b09b, #96c93d)',
+        },
+      }).showToast();
+    } else if (comments !== undefined) {
+        this.comments = comments;
+        comments.forEach((element) => {
+          this.showComment(element);
+        });
+        this.countComments();
+    }
+    if (btnRefresh !== null) btnRefresh.childNodes[0].className = '';
+  });
+
+  countComments = (() => {
+    this.commentTotal.innerText = this.comments.length;
+  });
+}
+
+export default MealPopup;

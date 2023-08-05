@@ -145,12 +145,6 @@ your server.
 
 > The collaborators of this project include:
 
-👤 **Yesuf Fenta**
-
-- GitHub: [@githubhandle](https://github.com/yusufyusie)
-- Twitter: [@twitterhandle](https://twitter.com/yusufyusiee)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/yusufyusie)
-
 👤 **Christopher Uduekwe**
 
 - GitHub: [@githubhandle](https://github.com/chudisoft)

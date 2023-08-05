@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title> api-based-webapp</title>
+  <link rel="stylesheet" href="./style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -18,7 +19,7 @@
       </div>
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" href="#">All Meals (<b id="totalMeals"></b>)</a>
+          <a class="nav-link active" href="#">All Meals</a>
           <span id="all-span" class="nav-span hide"></span>
         </li>
         <li class="nav-item">
@@ -36,28 +37,66 @@
       </ul>
     </nav>
   </header>
-  <main class="main">
-      <section id="section" class="meals-container">
-        <ul class="meals-card">
-        </ul>
-      </section>
-
-      <section class="open-popup">
-          <div class="close-popup"></div>
-          <div class="comments-board">
+  <section>
+    <div class="modal">
+      <div class="modal-container">
+        <div class="modal-header">
+          <span id="modal-close" class="modal-close" title="Close">
+            <i class="fa fa-close"></i>
+          </span>
+          <h2 id="modal-header"></h2>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <img id="itemImage" src="#" alt="" />
+            <h3 id="itemTitle"></h3>
           </div>
-      </section>
-
+          <div class="col-md-4">
+            <p>Category: <span id="category"></span></p>
+            <p>Area: <span id="area"></span></p>
+            <p>Tags: <span id="tags"></span></p>
+            <a id="youtube" href="#"><i class="fab fa-2x fa-youtube"></i></a>
+          </div>
+          <div class="col-md-4">
+            <h4>Ingredients:</h4>
+            <ol class="ingredients">
+            </ol>
+          </div>
+          <div>
+            <h4>Instruction:</h4>
+            <p class="instruction"></p>
+          </div>
+        </div>
+        <div class="row bg-primary mtb-2">
+          <div class="comment-list-section">
+            <p class="col-md-12">Comments (<span id="comment-total"></span>): </p>
+            <ul class="comment-list">
+            </ul>
+          </div>
+          <form class="comment-form">
+            <h4 class="col-md-12">Add New Comment:</h4>
+            <input type="text" id="comment-name" placeholder="Your Name" />
+            <textarea id="comment-insight" placeholder="Your Insight" ></textarea>
+            <button type="submit" id="comment-button"><i></i>Comment</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <main class="main">
+    <section class="meals-container">
+      <div class="meal-list row">
+      </div>
+    </section>
   </main>
   <footer>
     <p>
       Created by
-      <a class="author" href="https://github.com/chudisoft">Chudisoft</a> |
-      <a class="author" href="https://github.com/yusufyusie">Yesuf</a> under MIT licence.
+      <a class="author" href="https://github.com/chudisoft">Chudisoft</a> under MIT licence.
     </p>
   </footer>
 
-  <script type="module" src="./index.js"></script>
+  <script type="module" src="./script.js"></script>
 </body>
 
 </html>

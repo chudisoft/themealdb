@@ -107,6 +107,7 @@ export default class MealList {
         }
         this.showMeal(meal, like.likes);
       });
+      this.countLikes();
     }
     if (btnRefresh !== null) btnRefresh.childNodes[2].classList.toggle('fa fa-spin fa-spinner');
   });

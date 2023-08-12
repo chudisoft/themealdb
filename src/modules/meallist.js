@@ -8,7 +8,7 @@ export default class MealList {
   constructor(appId, baseUrl, baseUrlInvolve, mealId) {
     this.mealId = mealId;
     this.list = document.querySelector('.meal-list');
-    this.likeTotal = document.querySelector('.likeTotal');
+    this.itemsTotal = document.querySelector('.itemsTotal');
     this.appId = appId;
     this.likes = [];
     this.baseUrl = baseUrl;
@@ -94,7 +94,6 @@ export default class MealList {
           }).showToast();
         } else if (likes !== undefined) {
             this.likes = likes;
-            this.countLikes();
         }
       }
       meals.meals.forEach((meal) => {
@@ -107,7 +106,7 @@ export default class MealList {
         }
         this.showMeal(meal, like.likes);
       });
-      this.countLikes();
+      this.countItems();
     }
     if (btnRefresh !== null) btnRefresh.childNodes[2].classList.toggle('fa fa-spin fa-spinner');
   });
@@ -150,7 +149,7 @@ export default class MealList {
     if (btnRefresh !== null) btnRefresh.childNodes[0].className = '';
   });
 
-  countLikes = (() => {
-    this.likeTotal.innerText = this.likes.length;
+  countItems = (() => {
+    this.itemsTotal.innerText = this.list.childNodes.length;
   });
 }

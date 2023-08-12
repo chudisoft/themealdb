@@ -173,6 +173,11 @@ footer {
   padding: 2em 0;
 }
 
+.comment-list-section h2 {
+  color: #3d3d3d;
+  font-weight: 400;
+}
+
 #modal-section h2 {
   color: #3d3d3d;
   font-weight: 400;
@@ -221,6 +226,10 @@ footer {
   padding: 0 0 1em 1em;
 }
 
+.ps-2 {
+  padding-left: 0.5em;
+}
+
 .mb-2 {
   margin-bottom: 2em;
 }
@@ -230,16 +239,16 @@ footer {
   margin-bottom: 2em;
 }
 
+.hr {
+  max-width: 10em;
+  margin: 0 auto;
+  border: #0e6199 solid 2px;
+  margin-bottom: 2em;
+}
+
 .comment-list li:nth-child(odd) {
   background-color: #5ca6f5;
   color: #fff;
-}
-
-.comment-list li:hover,
-.comment-form button:hover {
-  background-color: #303030;
-  color: #fff;
-  cursor: pointer;
 }
 
 .bg-primary {
@@ -256,11 +265,6 @@ footer {
   max-width: 90%;
   font-size: large;
   padding: 2em 0;
-}
-
-.comment-list-section h2 {
-  color: #3d3d3d;
-  font-weight: 400;
 }
 
 .meal-list {
@@ -305,6 +309,13 @@ footer {
 .meal-detail:hover {
   border: #0e6199 4px solid;
   box-shadow: 4px -6px rgb(7, 36, 131);
+}
+
+.comment-list li:hover,
+.comment-form button:hover {
+  background-color: #303030;
+  color: #fff;
+  cursor: pointer;
 }
 
 /* Put all mobile code above this. */

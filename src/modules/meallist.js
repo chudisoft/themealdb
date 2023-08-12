@@ -27,9 +27,11 @@ export default class MealList {
     const elLikeParent = document.createElement('label');
     const elLike = document.createElement('i');
     const elIcon = document.createElement('img');
+    const elLikeCount = document.createElement('span');
     const elComment = document.createElement('button');
 
     div.className = 'meal-detail';
+    elLikeParent.className = 'ps-2';
     elLike.className = 'fa fa-heart';
 
     elName.textContent = meal.strMeal;
@@ -41,11 +43,13 @@ export default class MealList {
     );
 
     elLike.addEventListener(
-      'click', () => this.addLike(null, meal.idMeal),
+      'click', () => this.addLike(null, meal.idMeal, elLikeCount),
     );
-
-    elLikeParent.textContent += ` (${likeCount}) `;
+    elLikeCount.textContent = ` (${likeCount})`;
+    elLikeCount.counter = likeCount;
     elLikeParent.appendChild(elLike);
+    elLikeParent.appendChild(elLikeCount);
+
     div.appendChild(elIcon);
     divDetails.appendChild(elName);
     divDetails.appendChild(elLikeParent);
@@ -94,7 +98,7 @@ export default class MealList {
         }
       }
       meals.meals.forEach((meal) => {
-        let like = this.likes.find((x) => x.item_id === meal.mealId);
+        let like = this.likes.find((x) => x.item_id === meal.idMeal);
         if (like === undefined) {
           like = {
               likes: 0,
@@ -107,7 +111,7 @@ export default class MealList {
     if (btnRefresh !== null) btnRefresh.childNodes[2].classList.toggle('fa fa-spin fa-spinner');
   });
 
-  addLike = (async (btnRefresh = null, idMeal) => {
+  addLike = (async (btnRefresh = null, idMeal, elLikeCount) => {
     if (btnRefresh !== null) btnRefresh.childNodes[0].className = ('fa fa-spin fa-spinner');
     const likeObject = {
         item_id: idMeal,
@@ -139,6 +143,8 @@ export default class MealList {
           background: 'linear-gradient(to right, #00b09b, #96c93d)',
         },
       }).showToast();
+      elLikeCount.counter = Number(elLikeCount.counter) + 1;
+      elLikeCount.textContent = ` (${Number(elLikeCount.counter)})`;
     }
     if (btnRefresh !== null) btnRefresh.childNodes[0].className = '';
   });

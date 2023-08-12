@@ -8,6 +8,7 @@ export default class MealList {
   constructor(appId, baseUrl, baseUrlInvolve, mealId) {
     this.mealId = mealId;
     this.list = document.querySelector('.meal-list');
+    this.likeTotal = document.querySelector('.likeTotal');
     this.appId = appId;
     this.likes = [];
     this.baseUrl = baseUrl;

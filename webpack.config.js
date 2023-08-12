@@ -12,7 +12,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: ' api-based-webapp App',
+            title: 'themealdb App',
             template: './src/index.html',
         }),
     ],

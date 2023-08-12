@@ -221,6 +221,10 @@ footer {
   padding: 0 0 1em 1em;
 }
 
+.mb-2 {
+  margin-bottom: 2em;
+}
+
 .mtb-2 {
   margin-top: 2em;
   margin-bottom: 2em;
@@ -296,6 +300,11 @@ footer {
   background-color: #1c9eda;
   color: #fff;
   cursor: pointer;
+}
+
+.meal-detail:hover {
+  border: #0e6199 4px solid;
+  box-shadow: 4px -6px rgb(7, 36, 131);
 }
 
 /* Put all mobile code above this. */

@@ -1,12 +1,12 @@
 {
-  "name": " api-based-webapp",
+  "name": "themealdb",
   "version": "1.0.0",
   "description": "<a name=\"readme-top\"></a>\r <div align=\"center\">\r   <img src=\"assets/images/logo.png\" alt=\"logo\" width=\"140\"  height=\"auto\" />\r   <br/>",
   "main": "index.js",
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "homepage": "https://github.com/yusufyusie/ api-based-webapp#readme",
+  "homepage": "https://github.com/chudisoft/themealdb#readme",
   "scripts": {
     "test": "jest --coverage",
     "watch": "webpack --watch",
@@ -28,10 +28,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yusufyusie/ api-based-webapp"
+    "url": "https://github.com/chudisoft/themealdb"
   },
   "bugs": {
-    "url": "https://github.com/yusufyusie/ api-based-webapp/issues"
+    "url": "https://github.com/chudisoft/themealdb/issues"
   },
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.22.5",

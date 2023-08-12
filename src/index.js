@@ -24,13 +24,13 @@ const createApp = (async () => {
   saveData();
 });
 
-const retrieveId = () => {
+const retrieveId = async () => {
   appId = localStorage.getItem(mealAppIdName);
-  if (appId === null) createApp();
+  if (appId === null) await createApp();
 };
 
-document.body.onload = () => {
-  retrieveId();
+document.body.onload = async () => {
+  await retrieveId();
   const mealsNew = new MealList(appId, baseUrl, baseUrlInvolve, 52772);
   mealsNew.getMeals(null);
   // const mealNew = new MealList(appId, baseUrl, baseUrlInvolve, 52772);

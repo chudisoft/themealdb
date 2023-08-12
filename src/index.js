@@ -11,7 +11,7 @@ const saveData = () => {
 };
 
 const createApp = (async () => {
-  const response = await fetch(`${this.baseUrlInvolve}`, {
+  const response = await fetch(`${baseUrlInvolve}`, {
     method: 'post',
     headers: {
       'Content-Type': 'application/text',
